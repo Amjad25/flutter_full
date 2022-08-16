@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_full/Bulb_light.dart';
+import 'package:flutter_full/buttons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+
+
 class ExerciseCard extends StatelessWidget {
   const ExerciseCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-      home: Scaffold(
+    return  Scaffold(
+      floatingActionButton:  FloatingActionButton(
+          onPressed: ()
+      {
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context)=>LightBulb())
+        );
+      },
+          backgroundColor: Colors.blue,
+          hoverColor: Colors.grey,
+          focusColor: Colors.green,
+
+
+          child: const Icon(Icons.arrow_forward_rounded)),
         backgroundColor: Colors.orangeAccent.shade200,
-  body: Column(
+
+        body: Column(
+
     mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
 
@@ -87,9 +108,10 @@ class ExerciseCard extends StatelessWidget {
         ),
 
 
+
       ],
   ),
-      ),
+
     );
   }
 }

@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_full/card_exercise.dart';
+import 'package:flutter_full/Bulb_light.dart';
+import 'package:flutter_full/quiz_screens/about_quiz.dart';
+import 'package:flutter_full/quiz_screens/card_exercise.dart';
+import 'package:flutter_full/digital_clock/digital_clock_main.dart';
+import 'package:flutter_full/home.dart';
+import 'package:flutter_full/model/quiz.dart';
+import 'package:flutter_full/quiz_screens/result_quiz.dart';
+import 'package:flutter_full/routes.dart';
 import 'package:flutter_full/rowcolumnexercise.dart';
 
+import 'quiz_screens/guesscountries.dart';
+
 void main() {
-  runApp(
-      // const MyApp();
-      const ExerciseCard());
+  runApp(MyApp());
+  // MaterialApp(
+  //   home: ExerciseCard(),
+  // )
+  //   );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,42 +26,32 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title : 'Flutter Demo',
-  debugShowCheckedModeBanner: false,
-      home : SafeArea(
-        child: Scaffold(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      routes: {
+        "/": (context) => const HomeBulb(),
+        "/about": (context) => const AboutQuizScreen(),
+        "/guess": (context) => const GuessCountries(),
+        "/card": (context) => const ExerciseCard(),
+        "/rowcol": (context) => const Exercise_r_c(),
+        "/light": (context) => const LightBulb(),
+        "/dclock": (context) => const DigitalClock(),
+      },
+      onGenerateRoute: (settings)=> CustomRoutes.generateRoute(settings),
 
-        backgroundColor: Colors.black,
-          appBar: AppBar(title: const Text( "First APP"),
-            backgroundColor: Colors.deepOrange,
-            shadowColor: Colors.white,
-          ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children:  [
-              const Text("Hello this is me Bulb",style: TextStyle(
-                 fontSize: 20,
-                color: Colors.white
-              ),),
-              const Center(child: Image(
-                image:
-                  AssetImage("assets/images/bulb.jpg")
-                     ,
-              // NetworkImage("https://i.gifer.com/4Cb2.gif",scale: 1.5),
-              )
-              ),
-              FloatingActionButton(onPressed: ()
-              {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context)=>const Exercise_r_c(),),
-                );
-              },
-              child: const Icon(Icons.arrow_forward_rounded)),
-            ],
-          ),
-        ),
-      ),
+        //   (settings) {
+        // if (settings.name == "/result") {
+        //   final arg = settings.arguments as Quiz;
+        //   return MaterialPageRoute(
+        //       builder: (context) => ResultQuiz(
+        //         score: arg.score,
+        //         attempted: arg.attempted,
+        //       ));
+        
+
+      
+      initialRoute: HomeBulb.routeName,
+      // home : HomeBulb()
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_full/card_exercise.dart';
+import 'package:flutter_full/quiz_screens/card_exercise.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_full/main.dart';
 class Exercise_r_c extends StatefulWidget {
@@ -14,7 +14,15 @@ class _Exercise_r_cState extends State<Exercise_r_c> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SafeArea(child: Scaffold(
+      home: Scaffold(
+        floatingActionButton:  FloatingActionButton(onPressed: ()
+        {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context)=>ExerciseCard())
+          );
+        },
+            child: const Icon(Icons.arrow_forward_rounded)),
         backgroundColor: Colors.black,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -61,20 +69,12 @@ class _Exercise_r_cState extends State<Exercise_r_c> {
                 color: Colors.green,)
             ],
           ),
-          FloatingActionButton(onPressed: (){
-            Navigator.of(context)
-                .push(
-                MaterialPageRoute(
-                    builder: (context)=>const ExerciseCard(),
-                ),
-            );
-          }
-          ),
+
         ],
       ),
 
 
-      )),
+      ),
     );
   }
 }
